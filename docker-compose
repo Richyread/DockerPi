@@ -54,7 +54,7 @@ services:
 #Pihole handles DNS resolution/forwarding and advert blocking
  pihole:
     image: pihole/pihole:v4.0_armhf
-	container_name: pihole
+    container_name: pihole
     volumes:
       - ${USERDIR}/docker/pihole:/etc/pihole/
 #Note this log file needs to be created before the container is launched.
