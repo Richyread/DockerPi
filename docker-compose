@@ -74,7 +74,7 @@ services:
       - ServerIP:192.168.10.20
 #Unifi controller for the access points and router
  unifi:
-    image: ryansch/unifi-rpi:5.9
+    image: ryansch/unifi-rpi:5.9.22
     container_name: unifi
     volumes:
       - ${USERDIR}/docker/unifi:/usr/lib/unifi/data
