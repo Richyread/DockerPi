@@ -1,0 +1,38 @@
+version: "2"
+services:
+  portainer:
+    image: portainer/portainer
+    ports:
+      - "9000:9000"
+    command: -H unix:///var/run/docker.sock
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+
+	volumes:
+		portainer_data:
+ 
+
+	version: "2"
+services:
+  pihole:
+    image: pihole/pihole:v4.0_armhf
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+      - "67:67/udp"
+      - "81:80/tcp"
+      - "444:443/tcp"
+    environment:
+      # enter your docker host IP here
+      ServerIP: 192.168.10.20
+      # IPv6 Address if your network supports it
+      #ServerIPv6:
+      #Set your timezone to make sure logs rotate at local midnight instead of at UTC midnight.
+      TZ: Europe/London
+    volumes:
+      - '/etc/pihole/:/etc/pihole/'
+      # WARNING: if this log don't exist as a file on the host already
+      # docker will try to create a directory in it's place making for lots of errors
+      - '/var/log/pihole.log:/var/log/pihole.log'
+    restart: unless-stopped

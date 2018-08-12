@@ -1,0 +1,12 @@
+###############
+# Aliases
+##############
+
+# To edit a the docker-compose file:
+alias editdc="sudo nano ~/docker/docker-compose.yml"
+
+#To navigate back to the docker directory:
+alias dockdir="cd ~/docker"
+
+#To invoker docker-compose command:
+alias dcp="docker-compose"
