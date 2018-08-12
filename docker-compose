@@ -58,37 +58,37 @@ services:
     volumes:
       - ${USERDIR}/docker/pihole:/etc/pihole/
 #Note this log file needs to be created before the container is launched.
-	  - ${USERDIR}/docker/pihole/logs/pihole.log:/var/log/pihole.log
+      - ${USERDIR}/docker/pihole/logs/pihole.log:/var/log/pihole.log
       - ${USERDIR}/docker/shared:/shared
-	ports:
+    ports:
       - 53:53/tcp
       - 53:53/udp
       - 67:67/udp
       - 81:80/tcp
       - 444:443/tcp
-	restart: unless-stopped
+    restart: unless-stopped
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
       - TZ=${TZ}
-	  - ServerIP: 192.168.10.20
+      - ServerIP: 192.168.10.20
 #Unifi controller for the access points and router
  unifi:
     image: ryansch/unifi-rpi:5.9
-	container_name: unifi
+    container_name: unifi
     volumes:
       - ${USERDIR}/docker/unifi:/usr/lib/unifi/data
-	  - ${USERDIR}/docker/unifi/logs:/usr/lib/unifi/logs
-	  - ${USERDIR}/docker/shared:/shared
-	ports:
+      - ${USERDIR}/docker/unifi/logs:/usr/lib/unifi/logs
+      - ${USERDIR}/docker/shared:/shared
+    ports:
       - 3478:3478/udp
       - 6789:6789/tcp
       - 8080:8080/tcp
       - 8081:8081/tcp
       - 8443:8443/tcp
-	  - 8843:8843/tcp
-	  - 8880:8880/tcp
-	restart: unless-stopped
+      - 8843:8843/tcp
+      - 8880:8880/tcp
+    restart: unless-stopped
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
@@ -98,7 +98,7 @@ services:
     container_name: node-red
     restart: unless-stopped
     image: nodered/node-red-docker:rpi
-	volumes:
+    volumes:
       - ${USERDIR}/docker/node-red:/data
       - ${USERDIR}/docker/shared:/shared
     ports:
