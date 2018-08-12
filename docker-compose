@@ -35,7 +35,7 @@ services:
       - TZ=${TZ}
 #Mariadb is an open-source MYSQL alternative. Used to host databases on the server
  mariadb:
-    image: linuxserver/mariadb
+    image: lsioarmhf/mariadb
     container_name: mariadb
     hostname: mariadb
     volumes:
