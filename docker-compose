@@ -71,7 +71,7 @@ services:
       - PUID=${PUID}
       - PGID=${PGID}
       - TZ=${TZ}
-      - ServerIP:192.168.10.20
+      - ServerIP=192.168.10.20
 #Unifi controller for the access points and router
  unifi:
     image: ryansch/unifi-rpi:5.9.22
